@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+    <html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>Регистрационная форма</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <main>
+            <div class="form-container">
 <?php if (!empty($messages)): ?>
     <div style="margin: 20px 0; padding: 10px; background: #d4edda; border-radius: 5px;">
         <?php foreach ($messages as $msg): ?>
@@ -128,3 +138,7 @@
         </a>
     <?php endif; ?>
 </div>
+ </div>
+    </main>
+</body>
+</html>
