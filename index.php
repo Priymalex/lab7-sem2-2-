@@ -145,23 +145,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $messages[] = 'Произошла ошибка при загрузке данных. Пожалуйста, попробуйте позже.';
         }
     }
-    ?>
-    <!DOCTYPE html>
-    <html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <title>Регистрационная форма</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <main>
-            <div class="form-container">
-    <?include(__DIR__ . '/form.php');?>
-     </div>
-    </main>
-</body>
-</html>
-<?php
+    
+    include('form.php');
 }
 else {
     // POST запрос - обработка формы
