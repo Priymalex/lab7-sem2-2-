@@ -1,34 +1,35 @@
 <!DOCTYPE html>
-    <html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <title>Регистрационная форма</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <main>
-            <div class="form-container">
-<?php if (!empty($messages)): ?>
-    <div style="margin: 20px 0; padding: 10px; background: #d4edda; border-radius: 5px;">
-        <?php foreach ($messages as $msg): ?>
-            <div><?= $msg ?></div>
-        <?php endforeach; ?>
-    </div>
-<?php endif; ?>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрационная форма</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <div class="form-container">
 
-<?php if (!empty($error_messages)): ?>
-    <div style="margin: 20px 0; padding: 10px; background: #f8d7da; border-radius: 5px; color: #721c24;">
-        <strong>Исправьте следующие ошибки:</strong>
-        <ul>
-            <?php foreach ($error_messages as $field => $msg): ?>
-                <li><?= htmlspecialchars($msg, ENT_QUOTES, 'UTF-8') ?></li>
-            <?php endforeach; ?>
-        </ul>
-    </div>
-<?php endif; ?>
+            <?php if (!empty($messages)): ?>
+                <div style="margin: 20px 0; padding: 10px; background: #d4edda; border-radius: 5px;">
+                    <?php foreach ($messages as $msg): ?>
+                        <div><?= $msg ?></div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
 
-<form method="post" action="index.php">
-    <input type="hidden" name="csrf_token" value="<?= generateCSRFToken() ?>">
+            <?php if (!empty($error_messages)): ?>
+                <div style="margin: 20px 0; padding: 10px; background: #f8d7da; border-radius: 5px; color: #721c24;">
+                    <strong>Исправьте следующие ошибки:</strong>
+                    <ul>
+                        <?php foreach ($error_messages as $field => $msg): ?>
+                            <li><?= htmlspecialchars($msg, ENT_QUOTES, 'UTF-8') ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            <?php endif; ?>
+
+            <form method="post" action="index.php">
+                <input type="hidden" name="csrf_token" value="<?= generateCSRFToken() ?>">
     
     <label for="FIO">ФИО:</label>
 
@@ -117,28 +118,18 @@
     <?php endif; ?>
     
     <input type="submit" value="Сохранить">
-</form>
+            </form>
 
-<!-- Кнопка входа/выхода -->
-<div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd;">
-    <?php if (!empty($_SESSION['login'])): ?>
-        <span>✓ Вы вошли как <strong><?= htmlspecialchars($_SESSION['login'], ENT_QUOTES, 'UTF-8') ?></strong></span>
-        <a href="login.php?logout=1" style="margin-left: 15px; color: #f44336;">Выйти</a>
-    <?php else: ?>
-        <a href="login.php" style="
-            display: inline-block;
-            padding: 10px 25px;
-            background-color: #4CAF50;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        ">
-        Войти для изменения данных
-        </a>
-    <?php endif; ?>
-</div>
- </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <?php if (!empty($_SESSION['login'])): ?>
+                    <span>✓ Вы вошли как <strong><?= htmlspecialchars($_SESSION['login'], ENT_QUOTES, 'UTF-8') ?></strong></span>
+                    <a href="login.php?logout=1" style="margin-left: 15px; color: #f44336;">Выйти</a>
+                <?php else: ?>
+                    <a href="login.php">🔐 Войти для изменения данных</a>
+                <?php endif; ?>
+            </div>
+
+        </div>
     </main>
 </body>
 </html>
